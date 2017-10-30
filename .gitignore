@@ -1,52 +1,98 @@
-# Prerequisites
-*.d
+#include <stdio.h>
+#include <stdlib.h>
 
-# Object files
-*.o
-*.ko
-*.obj
-*.elf
-
-# Linker output
-*.ilk
-*.map
-*.exp
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Libraries
-*.lib
-*.a
-*.la
-*.lo
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
-*.i*86
-*.x86_64
-*.hex
-
-# Debug files
-*.dSYM/
-*.su
-*.idb
-*.pdb
-
-# Kernel Module Compile Results
-*.mod*
-*.cmd
-.tmp_versions/
-modules.order
-Module.symvers
-Mkfile.old
-dkms.conf
+int main()
+{
+	FILE *lerArquivo = fopen("arquivo.txt", "a");
+	char nome[500] = "";
+	int sexo;
+	float altura, peso, IMC;
+	if(lerArquivo == NULL){
+		printf("Arquivo nao encontrado!!\n");
+		getchar();
+		exit(0);
+		return 0;
+	}	
+	printf("Programa de cadastro de pessoas!!");
+	printf("\nQual o seu sexo?(Se masculino escreva 1, se for feminino escreva 2): ");
+	scanf("%i", &sexo);
+	
+	if(sexo == 1 )
+	{
+		printf("\nDigite o nome: ");
+		scanf("%s", &nome);
+		printf("Digite a altura (m): ");
+		scanf("%f", &altura);
+		printf("Digite o peso (KG): ");
+		scanf("%f", &peso);
+		IMC = (peso/(altura*altura));
+		if(IMC < 20.7){
+			fprintf(lerArquivo,"Nome: %s Altura (m):%.2f Peso (KG): %.2f\n", nome, altura, peso);
+			printf("O seu IMC eh: %.2f", IMC);
+			printf("\nSituacao: Abaixo do peso!\n");
+			}else{
+				if(IMC>=20.7 & IMC<=26.4){
+				fprintf(lerArquivo,"Nome: %s Altura (m):%.2f Peso (KG): %.2f\n", nome, altura, peso);
+				printf("O seu IMC eh: %.2f", IMC);
+				printf("\nSituacao: Peso ideal\n");	
+				}else{
+					if(IMC>=26.5 & IMC<=27.8){
+					fprintf(lerArquivo,"Nome: %s Altura (m):%.2f Peso (KG): %.2f\n", nome, altura, peso);	
+					printf("O seu IMC eh: %.2f", IMC);
+					printf("\nSituacao: Pouco Acima do peso!\n");	
+					}else{
+						if(IMC>=27.9 & IMC<=31.1){
+						fprintf(lerArquivo,"Nome: %s Altura (m):%.2f Peso (KG): %.2f\n", nome, altura, peso);	
+						printf("O seu IMC eh: %.2f", IMC);
+						printf("\nSituacao: Acima do peso!\n");	
+						}else{
+							fprintf(lerArquivo,"Nome: %s Altura (m):%.2f Peso (KG): %.2f\n", nome, altura, peso);
+							printf("O seu IMC eh: %.2f", IMC);
+							printf("\nSituacao: Obesidade!\n");
+				}
+			}
+		}
+	}
+	}else
+	{
+		if(sexo == 2){
+		printf("\nDigite o nome: ");
+		scanf("%s", &nome);
+		printf("Digite a altura (m): ");
+		scanf("%f", &altura);
+		printf("Digite o peso (KG): ");
+		scanf("%f", &peso);
+		IMC = (peso/(altura*altura));
+		if(IMC < 19.1){
+			fprintf(lerArquivo,"Nome: %s Altura (m):%.2f Peso (KG): %.2f\n", nome, altura, peso);
+			printf("O seu IMC eh: %.2f", IMC);
+			printf("\nSituacao: Abaixo do peso!\n");
+			}else{
+				if(IMC>=19.1 & IMC<=25.8){
+				fprintf(lerArquivo,"Nome: %s Altura (m):%.2f Peso (KG): %.2f\n", nome, altura, peso);
+				printf("O seu IMC eh: %.2f", IMC);
+				printf("\nSituacao: Peso ideal\n");	
+				}else{
+					if(IMC>=25.9 & IMC<=27.3){
+					fprintf(lerArquivo,"Nome: %s Altura (m):%.2f Peso (KG): %.2f\n", nome, altura, peso);	
+					printf("O seu IMC eh: %.2f", IMC);
+					printf("\nSituacao: Pouco Acima do peso!\n");	
+					}else{
+						if(IMC>=27.4 & IMC<=32.3){
+						fprintf(lerArquivo,"Nome: %s Altura (m):%.2f Peso (KG): %.2f\n", nome, altura, peso);	
+						printf("O seu IMC eh: %.2f", IMC);
+						printf("\nSituacao: Acima do peso!\n");	
+						}else{
+							fprintf(lerArquivo,"Nome: %s Altura (m):%.2f Peso (KG): %.2f\n", nome, altura, peso);
+							printf("O seu IMC eh: %.2f", IMC);
+							printf("\nSituacao: Obesidade!\n");
+							
+	}}}}}}if(sexo != 1 & sexo !=2){
+		printf("Numero invalido, por favor tente novamente!!\n");
+		getchar();
+		exit(0);
+	}
+	fclose(lerArquivo);
+	system("pause");
+	return 0;
+}
